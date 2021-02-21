@@ -7,7 +7,7 @@ export default function StudentCard(props) {
         <div>
             <div class="box">
                 <div class = "imgBx">
-                  <img src="https://images.edrawmax.com/images/knowledge/line-graph-1-what-is.jpg"/>
+                  <img src="https://images.edrawmax.com/images/knowledge/line-graph-1-what-is.jpg" alt="failed to load"/>
                 </div>
                 <div class = "text">
                   <p>{props.studentName}</p>

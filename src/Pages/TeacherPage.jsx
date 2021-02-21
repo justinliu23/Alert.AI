@@ -24,10 +24,38 @@ export default function TeacherPage(props) {
         method: 'GET',
         mode: 'cors',
         cache: 'no-cache',
-      }).then((res) => console.log(JSON.parse(res)))
+      }).then((res) => JSON.parse(res))
+      .then((data) => {
+        const users = []
+        for (let i = 0; i < data.length; i++) {
+          if(data['username'] in users) {} else {
+            users.push(data['username'])
+          }
+        }
+        //For each unique student in the thing: create an array of all their attention values
+        //FOR NOW: Find the one with the highest time value
+        //Pass that value to the object.
+        
+        for (let i = 0; i < users.length; i++) {
+          let count = 0;
+          let attnSum = 0;
+          let justUser = data.filter(function (entry) {
+            return entry.username === users[i]
+          })
+          for (let j = 0; j < justUser.length; j++) {
+            attnSum += justUser['attnScore']
+          }
+          attnSum = attnSum/count
+          const newCard = <StudentCard studentName={users[i]} studentScore={attnSum}/>
+          newCards.push(newCard)
+        }
+        const newCards = []
+        
+        setStudentCards(newCards)
+      })
       .then((err) => console.log(err))
 
-    }, 5000);
+    }, 20000);
     return () => clearInterval(interval);
   });
 
