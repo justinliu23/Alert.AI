@@ -3,7 +3,7 @@ import Navbar from "../Components/Navbar/Navbar";
 import { Link } from "react-router-dom";
 import "./signpages.css";
 
-export default function SignUpPage() {
+export default function SignInPage() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [isTeacher, setIsTeacher] = useState(false);
