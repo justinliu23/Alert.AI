@@ -69,7 +69,7 @@ export default function SignInPage(props) {
             <span class="checkmark" />
           </label>
           <div>
-            <button onClick={handleSignIn}>Sign In</button>
+            <button className="next action-button" onClick={handleSignIn}>Sign In</button>
             <Link to="/sign-up">Sign Up</Link>
           </div>
           </fieldset>

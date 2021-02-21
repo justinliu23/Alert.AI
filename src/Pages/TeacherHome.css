@@ -1,6 +1,19 @@
 .container {
-    background-color: black;
     color: white;
     text-decoration: none;
-    padding: 80px;
+    width: 100%;
+    height: 90vh;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.navlink {
+    background-color: red;
+    vertical-align: middle;
+    color: white;
+    padding: 30px 30px;
+    margin-top: 200px;
+    text-decoration: none;
+    border-radius: 5px;
+    border-color: white;
 }
