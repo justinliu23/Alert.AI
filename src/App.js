@@ -11,6 +11,7 @@ import StudentPage from './Pages/StudentPage'
 import TeacherPage from './Pages/TeacherPage'
 import TeacherHome from './Pages/TeacherHome'
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute'
+import StudentClassPage from './Pages/StudentClassPage'
 
 //  import Login from './Components/Login/Login'
 // import PrivateRoute from './Components/PrivateRoute/PrivateRoute'
@@ -27,6 +28,9 @@ function makeid(length) {
 
 function App() {
   const [username, setUsername] = useState('')
+
+  //Only for students?
+  const [classCode, setClassCode] = useState('')
   return (
     <Router>
       <div>
@@ -51,9 +55,28 @@ function App() {
               />
             )}
           />
-          <Route exact path="/student">
-            <StudentPage />
-          </Route>
+          <Route
+            exact path="/student"
+            render={(props) => (
+              <StudentPage
+                {...props}
+                username={username}
+                setCode={setClassCode}
+                classCode={classCode}
+              />
+            )}
+          />
+          <Route
+            exact path="/studentclass"
+            render={(props) => (
+              <StudentClassPage
+                {...props}
+                username={username}
+                setCode={setClassCode}
+                classCode={classCode}
+              />
+            )}
+          />
           <Route exact path="/teacherhome">
             <TeacherHome />
           </Route>
@@ -63,6 +86,7 @@ function App() {
               <TeacherPage
                 {...props}
                 classCode={makeid(6)}
+                username={username}
               />
             )}
           />

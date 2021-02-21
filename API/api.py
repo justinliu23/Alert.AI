@@ -6,10 +6,11 @@ from flask_jwt_extended import JWTManager
 from flask_sqlalchemy import SQLAlchemy
 from lib2to3.refactor import _identity
 import hashlib
-from marshmallow import Schema, fields
+from flask_marshmallow import Marshmallow
 
 app = Flask(__name__)
 api = Api(app)
+ma = Marshmallow(app)
 
 parser = reqparse.RequestParser()
 parser.add_argument('userName', help = 'Username cannot be blank', required = True)
@@ -30,6 +31,7 @@ class User(db.Model):
     def __repr__(self):
         return f"User('{self.username}', {self.segState})"
 
+
 class Classroom(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     classCode = db.Column(db.String(8), nullable=False, unique=False)
@@ -37,7 +39,14 @@ class Classroom(db.Model):
     timeslot = db.Column(db.Integer, nullable=False, unique=False)
     attnScore = db.Column(db.Integer, nullable=False, unique=False)
 
+class ClassroomSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'classCode', 'studentName', 'timeslot', 'attnScore')
+        model = Classroom
 
+
+Classroom_schema = ClassroomSchema()
+Classrooms_schema = ClassroomSchema(many=True)
 
 class QueryModel(Resource):
     def post(self):
@@ -52,8 +61,6 @@ class QueryModel(Resource):
         c = Classroom(classCode=data['classCode'], studentName=data['username'], timeslot=data['value'], attnScore=result)
         db.session.add(c)
         db.session.commit()
-
-        print(Classroom.query.all())
         
         return 'success'
 
@@ -98,6 +105,9 @@ class UserRegistration(Resource):
 class ClassroomData(Resource):
     def get(self):
         classroom = request.args.get('classCode')
+        queriedData = Classroom.query.filter_by(classCode=classroom).all()
+        return jsonify(Classrooms_schema.dump(queriedData))
+
 
 class UserLogin(Resource):
     def post(self):
@@ -132,7 +142,7 @@ api.add_resource(UserRegistration, '/sign-up')
 api.add_resource(UserLogin, '/sign-in')
 api.add_resource(QueryModel, '/api/model')
 api.add_resource(DeleteClassroom, '/api/deleteclassrom')
-
+api.add_resource(ClassroomData, '/api/classroomdata')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5000, debug=True)

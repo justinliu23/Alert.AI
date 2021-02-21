@@ -64,3 +64,19 @@ body {
   color: #C20114;
   cursor: pointer;
 }
+
+button {
+
+  background-color: red;
+  vertical-align: middle;
+  color: white;
+  padding: 30px 30px;
+  margin-top: 200px;
+  text-decoration: none;
+  border-radius: 5px;
+  border-color: white;
+}
+
+.center {
+  text-align: center;
+}

@@ -4,25 +4,31 @@ import StudentCard from '../Components/StudentCard/StudentCard'
 import "./TeacherPage.css";
 
 export default function TeacherPage(props) {
+
+  const endClassroom = () => {
+    //Call API to end classroom
+    //Redirect to home page.
+  } 
+
   useEffect(() => {
     const interval = setInterval(() => {
       const data = {
         'classCode': props.classCode, //props.classCode
       }
 
-      fetch('http://127.0.0.1:5000/api/model', {
-        method: 'POST',
-        mode: 'no-cors',
+      fetch(`http://127.0.0.1:5000/api/classroomdata?classCode=${encodeURIComponent(
+        props.classCode
+      )}`, {
+        method: 'GET',
+        mode: 'cors',
         cache: 'no-cache',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-      }).then((err) => console.log(err))
+      }).then((res) => console.log(JSON.parse(res)))
+      .then((err) => console.log(err))
 
     }, 5000);
     return () => clearInterval(interval);
   });
+
 
     return (
       <>
@@ -37,6 +43,9 @@ export default function TeacherPage(props) {
               <StudentCard studentName="student3" studentScore="20%"/>
             </div>
           </section>
+          <div className="center">
+            <button onClick={endClassroom}>End Classroom</button>
+          </div>
         </>
     )
 }
