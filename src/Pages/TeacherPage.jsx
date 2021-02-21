@@ -24,8 +24,9 @@ export default function TeacherPage(props) {
         method: 'GET',
         mode: 'cors',
         cache: 'no-cache',
-      }).then((res) => JSON.parse(res))
+      }).then((res) => res.json())
       .then((data) => {
+        console.log(data)
         const users = []
         for (let i = 0; i < data.length; i++) {
           if(data['username'] in users) {} else {

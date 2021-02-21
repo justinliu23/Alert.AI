@@ -109,9 +109,15 @@ class UserRegistration(Resource):
 class ClassroomData(Resource):
     def get(self):
         classroom = request.args.get('classCode')
+        
         queriedData = Classroom.query.filter_by(classCode=classroom).all()
-        return jsonify(Classrooms_schema.dump(queriedData))
+        listvar = jsonify(Classrooms_schema.dump(queriedData))
+        print(listvar)
+        return listvar
+        #return jsonify({'test': 'args'})
 
+class DumpStuff():
+    print('hi')
 
 class UserLogin(Resource):
     def post(self):
