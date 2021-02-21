@@ -6,6 +6,7 @@ from flask_jwt_extended import JWTManager
 from flask_sqlalchemy import SQLAlchemy
 from lib2to3.refactor import _identity
 import hashlib
+from marshmallow import Schema, fields
 
 app = Flask(__name__)
 api = Api(app)
@@ -56,6 +57,18 @@ class QueryModel(Resource):
         
         return 'success'
 
+class DeleteClassroom(Resource):
+    def post(self):
+        data = request.get_json(force=True)
+
+        roomToClose = data['classCode']
+
+        Classroom.query.filter_by(classCode=roomToClose).delete()
+        db.session.commit()
+        return 'success'
+
+
+
 
 
 class UserRegistration(Resource):
@@ -81,6 +94,10 @@ class UserRegistration(Resource):
             })
         #except:
          #   raise Exception()
+
+class ClassroomData(Resource):
+    def get(self):
+        classroom = request.args.get('classCode')
 
 class UserLogin(Resource):
     def post(self):
@@ -114,6 +131,7 @@ def index():
 api.add_resource(UserRegistration, '/sign-up')
 api.add_resource(UserLogin, '/sign-in')
 api.add_resource(QueryModel, '/api/model')
+api.add_resource(DeleteClassroom, '/api/deleteclassrom')
 
 
 if __name__ == '__main__':
