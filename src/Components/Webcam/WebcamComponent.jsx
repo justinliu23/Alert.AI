@@ -22,12 +22,11 @@ const WebcamComponent = (props) => {
       //updates imgSrc
       capture()
 
-      const imgData = new FormData();
       const data = {
         'imgStr': imgSrc,
-        'username': tempName, // localStorage.getItem('username')
+        'username': props.username, // localStorage.getItem('username')
         'value': increment,
-        'classCode': classCode, //props.classCode
+        'classCode': props.classCode, 
       }
       console.log(imgSrc)
 

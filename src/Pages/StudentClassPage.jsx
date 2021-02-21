@@ -8,9 +8,9 @@ export default function StudentPage(props) {
     return (
         <>
             <LoggedNavbar />
-            <h1>{props.classCode}</h1>
+            <h1>{props.classCode} - {props.username}</h1>
         <div style={{display: 'flex'}}>
-            <WebcamComponent />
+            <WebcamComponent classCode={props.classCode} username={props.username} />
             <StudentReminder />
         </div>
         </>

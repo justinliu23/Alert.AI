@@ -1,9 +1,11 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import Navbar from "../Components/Navbar/Navbar";
 import StudentCard from '../Components/StudentCard/StudentCard'
 import "./TeacherPage.css";
 
 export default function TeacherPage(props) {
+
+  const [StudentCards, setStudentCards] = useState([])
 
   const endClassroom = () => {
     //Call API to end classroom
@@ -29,6 +31,7 @@ export default function TeacherPage(props) {
     return () => clearInterval(interval);
   });
 
+    
 
     return (
       <>
@@ -38,9 +41,10 @@ export default function TeacherPage(props) {
               <h2 class ="titleText"> Students - {props.classCode} </h2>
             </div>
             <div class ="content">
-              <StudentCard studentName="student1" studentScore="5%"/>
+              {/* <StudentCard studentName="student1" studentScore="5%"/>
               <StudentCard studentName="student2" studentScore="15%"/>
-              <StudentCard studentName="student3" studentScore="20%"/>
+              <StudentCard studentName="student3" studentScore="20%"/> */}
+              {StudentCards !== [] && StudentCards}
             </div>
           </section>
           <div className="center">

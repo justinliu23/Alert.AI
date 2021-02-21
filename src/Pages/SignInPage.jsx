@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../Components/Navbar/Navbar";
 import { Link } from "react-router-dom";
-import "./signinpage.css";
+import "./signintemplate.css";
 
 export default function SignInPage(props) {
   const [userName, setUserName] = useState("");
@@ -59,7 +59,7 @@ export default function SignInPage(props) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <label class="container">
+          <label>
             Are you a teacher?
             <input
               type="checkbox"

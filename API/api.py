@@ -7,10 +7,12 @@ from flask_sqlalchemy import SQLAlchemy
 from lib2to3.refactor import _identity
 import hashlib
 from flask_marshmallow import Marshmallow
+from flask_cors import CORS
 
 app = Flask(__name__)
 api = Api(app)
 ma = Marshmallow(app)
+CORS(app)
 
 parser = reqparse.RequestParser()
 parser.add_argument('userName', help = 'Username cannot be blank', required = True)
