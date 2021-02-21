@@ -6,9 +6,9 @@ export default function Navbar() {
     return (
         <div className='navbar'>
             <ul>
+                <li><Link to="/" className='navLink'>Home</Link></li>
                 <li><Link to="/sign-in" className='navLink'>Sign In</Link></li>
                 <li><Link to="/sign-up" className='navLink'>Sign Up</Link></li>
-                <li><Link to="/" className='navLink'>Home</Link></li>
             </ul>
         </div>
     )
