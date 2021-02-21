@@ -55,6 +55,8 @@ class QueryModel(Resource):
         #Gets img encoded as string
         data = request.get_json(force=True)
 
+        imgStr = data['imgStr']
+
         #result = RUN MODEL on data['imgStr']
 
         result = 5; #Temporary Filler Value
