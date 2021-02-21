@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function StudentPage() {
+export default function TeacherPage() {
     return (
         <div>
             
-            Student
+            Teacher
         </div>
     )
 }

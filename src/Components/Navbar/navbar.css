@@ -8,8 +8,25 @@
 }
 
 .navLink {
-    text-decoration: none;
-    
-    margin-left: 20px;
-    padding: 30px;
+    display: block;
+    height: auto;
+    text-decoration: None;
+    color: white;
 }
+
+li {
+    display: inline;
+    float: left;
+    height: 100%;
+    padding: 10px;
+  }
+
+li:hover {
+    background-color: black;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
