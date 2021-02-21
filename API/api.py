@@ -29,13 +29,17 @@ class User(db.Model):
     def __repr__(self):
         return f"User('{self.username}', {self.segState})"
 
+# class Classroom(db.Model):
+
+
 class UserRegistration(Resource):
     def post(self):
         #try:
             data = parser.parse_args()
-            print(hashlib.md5(data['password'].encode()).hexdigest())
             if User.query.filter(User.username==data['userName']).first():
-                return {"error" : "User already exists"}
+                print({"error" : "User already exists"})
+                rval = {"error" : "User already exists"}
+                return jsonify(rval)
 
             u = User(username=data['userName'], password=hashlib.md5(data['password'].encode()).hexdigest())
             db.session.add(u)
@@ -43,11 +47,11 @@ class UserRegistration(Resource):
 
             access_token = create_access_token(identity=data['userName'])
             refresh_token = create_refresh_token(identity=data['userName'])
-            return {
+            return jsonify({
                 'userName': data['userName'],
                 'access_token': access_token,
                 'refresh_token': refresh_token
-            }
+            })
         #except:
          #   raise Exception()
 
@@ -58,17 +62,19 @@ class UserLogin(Resource):
             current_user = User.query.filter(User.username==data['userName']).first()
 
             if not current_user:
-                return {"error":"User not in DB. Register as a new user"}
+                print('return here')
+                print(jsonify({"error":"User not in DB. Register as a new user"}))
+                return jsonify({"error":"User not in DB. Register as a new user"})
 
             password = hashlib.md5(data['password'].encode()).hexdigest()
             if current_user.password == password :
                 access_token = create_access_token(identity=data['username'])
                 refresh_token = create_refresh_token(identity=data['username'])
-                return {
+                return jsonify({
                     'username': current_user.username,
                     'access_token': access_token,
                     'refresh_token': refresh_token
-                }
+                })
             else:
                 return {'error': 'Wrong credentials'}
         except:
