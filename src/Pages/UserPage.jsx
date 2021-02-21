@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../Components/Navbar/Navbar";
 import { Link } from "react-router-dom";
-import "./signpages.css";
+import "./signinpage.css";
 import auth from '../auth'
 
 export default function SignUpPage() {

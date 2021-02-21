@@ -26,19 +26,31 @@ function makeid(length) {
 }
 
 function App() {
-  
+  const [username, setUsername] = useState('')
   return (
     <Router>
       <div>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route exact path="/sign-in">
-            <SignInPage />
-          </Route>
-          <Route exact path="/sign-up">
-            <UserPage />
-          </Route>
+          <Route
+            exact path="/sign-in"
+            render={(props) => (
+              <SignInPage
+                {...props}
+                setUsername={setUsername}
+              />
+            )}
+          />
+          <Route
+            exact path="/sign-up"
+            render={(props) => (
+              <UserPage
+                {...props}
+                setUsername={setUsername}
+              />
+            )}
+          />
           <Route exact path="/student">
             <StudentPage />
           </Route>

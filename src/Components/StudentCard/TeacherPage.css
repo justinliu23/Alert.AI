@@ -1,0 +1,66 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+body {
+  font-family: montserrat;
+}
+
+
+    .titleText {
+      color: black;
+      text-align: center;
+      padding-top: 20px;
+    }
+
+    .testimonials .content {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      flex-direction: row;
+      margin-top: 40px;
+    }
+    .testimonials .content .box {
+      width: 340px;
+      margin: 20px;
+      padding: 40px;
+      background: #fff;
+      border: black solid 1px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .testimonials .content .box .imgBx {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin-bottom: 20px;
+      
+      overflow: hidden;
+    }
+     .testimonials .content .box .imgBx img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+     }
+     .testimonials .content .box .text {
+      text-align: center;
+     }
+     .testimonials .content .box .text p {
+      color: #666;
+      font-style: italic;
+     }
+     .testimonials .content .box .text h3 {
+      margin-top: 20px;
+      font-size: 1em;
+      font-weight: 600;
+
+     }
+
+.box:hover
+{
+  color: #C20114;
+  cursor: pointer;
+}
