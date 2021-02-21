@@ -1,6 +1,7 @@
 import React, {useState, useRef, useCallback, useEffect} from "react";
 import Webcam from 'react-webcam'
 import './WebcamComponent.css'
+import auth from '../../auth'
 
 const videoConstraints = {
   width: 1280,
@@ -8,9 +9,13 @@ const videoConstraints = {
   facingMode: "user",
 };
 
-const WebcamComponent = () => {
+const WebcamComponent = (props) => {
   const webcamRef = useRef(null);
   const [imgSrc, setImgSrc] = useState(null);
+  const [increment, setIncrement] = useState(0);
+
+  const classCode = 'tester'
+  const tempName = 'User1'
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -20,10 +25,13 @@ const WebcamComponent = () => {
       const imgData = new FormData();
       const data = {
         'imgStr': imgSrc,
+        'username': tempName, // localStorage.getItem('username')
+        'value': increment,
+        'classCode': classCode, //props.classCode
       }
       console.log(imgSrc)
 
-      fetch('http://127.0.0.1:5000/api/images', {
+      fetch('http://127.0.0.1:5000/api/model', {
         method: 'POST',
         mode: 'no-cors',
         cache: 'no-cache',

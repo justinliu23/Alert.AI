@@ -1,4 +1,4 @@
-from flask import Flask,jsonify
+from flask import Flask,jsonify, request
 from flask_restful import Api, Resource, reqparse
 from flask_jwt_extended import (create_access_token, create_refresh_token, jwt_required, jwt_refresh_token_required,
                                 get_jwt_identity, get_raw_jwt)
@@ -29,17 +29,44 @@ class User(db.Model):
     def __repr__(self):
         return f"User('{self.username}', {self.segState})"
 
-# class Classroom(db.Model):
+class Classroom(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    classCode = db.Column(db.String(8), nullable=False, unique=False)
+    studentName = db.Column(db.String(80), nullable=False, unique=False)
+    timeslot = db.Column(db.Integer, nullable=False, unique=False)
+    attnScore = db.Column(db.Integer, nullable=False, unique=False)
+
+
+
+class QueryModel(Resource):
+    def post(self):
+        #Gets img encoded as string
+        data = request.get_json(force=True)
+
+        #result = RUN MODEL on data['imgStr']
+
+        result = 5; #Temporary Filler Value
+
+        #Stores values in Db
+        c = Classroom(classCode=data['classCode'], studentName=data['username'], timeslot=data['value'], attnScore=result)
+        db.session.add(c)
+        db.session.commit()
+
+        print(Classroom.query.all())
+        
+        return 'success'
+
 
 
 class UserRegistration(Resource):
     def post(self):
         #try:
             data = parser.parse_args()
+            print(data)
             if User.query.filter(User.username==data['userName']).first():
                 print({"error" : "User already exists"})
                 rval = {"error" : "User already exists"}
-                return jsonify(rval)
+                return jsonify('rval')
 
             u = User(username=data['userName'], password=hashlib.md5(data['password'].encode()).hexdigest())
             db.session.add(u)
@@ -86,8 +113,9 @@ def index():
 
 api.add_resource(UserRegistration, '/sign-up')
 api.add_resource(UserLogin, '/sign-in')
+api.add_resource(QueryModel, '/api/model')
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5000)
+    app.run(host='127.0.0.1', port=5000, debug=True)
 

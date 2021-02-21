@@ -12,7 +12,7 @@ export default function StudentReminder() {
           /*
           fetch('http://127.0.0.1:5000/api/')
           */
-          const data = 9
+          const data = 11
           if(data > notAttention) {
               setReminder("BAD")
           } else {
