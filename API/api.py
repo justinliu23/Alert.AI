@@ -8,6 +8,8 @@ from lib2to3.refactor import _identity
 import hashlib
 from flask_marshmallow import Marshmallow
 from flask_cors import CORS
+import random
+
 
 app = Flask(__name__)
 api = Api(app)
@@ -59,7 +61,7 @@ class QueryModel(Resource):
 
         #result = RUN MODEL on data['imgStr']
 
-        result = 5; #Temporary Filler Value
+        result = random.randint(2, 100); #Temporary Filler Value
 
         #Stores values in Db
         c = Classroom(classCode=data['classCode'], studentName=data['username'], timeslot=data['value'], attnScore=result)
