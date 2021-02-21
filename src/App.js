@@ -10,6 +10,7 @@ import SignInPage from './Pages/SignInPage'
 import StudentPage from './Pages/StudentPage'
 import TeacherPage from './Pages/TeacherPage'
 import TeacherHome from './Pages/TeacherHome'
+import LandingPage from './Pages/LandingPage'
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute'
 import StudentClassPage from './Pages/StudentClassPage'
 
@@ -91,7 +92,7 @@ function App() {
             )}
           />
           <Route exact path="/">
-            <HomePage />
+            <LandingPage />
           </Route>
         </Switch>
       </div>

@@ -12,5 +12,6 @@ export default function LandingPage() {
              <a href = "/sign-in" class = "btn">Log in</a>
            </div>
          </section>
+      </>
     )
 }

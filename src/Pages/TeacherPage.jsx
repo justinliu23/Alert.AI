@@ -19,7 +19,7 @@ export default function TeacherPage(props) {
       }
 
       fetch(`http://127.0.0.1:5000/api/classroomdata?classCode=${encodeURIComponent(
-        props.classCode
+        "ABCDE"
       )}`, {
         method: 'GET',
         mode: 'cors',
@@ -36,7 +36,7 @@ export default function TeacherPage(props) {
         //FOR NOW: Find the one with the highest time value
         //Pass that value to the object.
         const newCards = []
-        
+
         for (let i = 0; i < users.length; i++) {
           let count = 0;
           let attnSum = 0;

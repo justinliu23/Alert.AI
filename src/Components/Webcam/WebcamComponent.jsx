@@ -26,7 +26,7 @@ const WebcamComponent = (props) => {
         'imgStr': imgSrc,
         'username': props.username, // localStorage.getItem('username')
         'value': increment,
-        'classCode': props.classCode, 
+        'classCode': "ABCDE", 
       }
       console.log(imgSrc)
 
