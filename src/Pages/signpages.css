@@ -33,7 +33,7 @@ body {
     float: left;
 }
 
-.buttons a {
+.buttons {
     float: right;
     padding-top: 15px;
 }
