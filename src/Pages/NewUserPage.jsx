@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../Components/Navbar/Navbar";
 import { Link } from "react-router-dom";
 import "./signpages.css";
+import auth from '../Auth'
 
 export default function SignUpPage() {
   const [userName, setUserName] = useState("");
