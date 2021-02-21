@@ -12,7 +12,7 @@ export default function SignUpPage() {
 
   const handleRegistration = (e) =>{
     e.preventDefault() ;
-    let url = "http://localhost:5000/sign-up"
+    let url = "http://127.0.0.1:5000/sign-up"
     let formData  = new FormData();
     formData.append('userName', userName);
     formData.append('password', password);
@@ -20,9 +20,11 @@ export default function SignUpPage() {
 
     fetch(url, {
       method: 'POST',
-      body: formData
-    }).then( res => res.json())
-    .then(data=>{
+      body: formData,
+      mode: 'no-cors',
+    }).then((res) => res.json())
+    .then(data => {
+      console.log("DATA" + data)
       localStorage.setItem('access_token', data.access_token);
       
       localStorage.setItem('username', data.username);
@@ -55,14 +57,14 @@ export default function SignUpPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <label class="container">
+          <label className="container">
             Are you a teacher?
             <input
               type="checkbox"
               onClick={(e) => handleClick(e)}
               checked={isTeacher}
             />
-            <span class="checkmark" />
+            <span className="checkmark" />
           </label>
           <div>
             <button onClick={handleRegistration}>Sign In</button>

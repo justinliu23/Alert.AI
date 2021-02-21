@@ -9,22 +9,6 @@ export default function SignInPage() {
   const [isTeacher, setIsTeacher] = useState(false);
   const handleClick = () => setIsTeacher(!isTeacher);
 
-  // const handleSignIn = (e) => {
-  //   e.preventDefault();
-  //   fetch("http://127.0.0.1:5000/api/auth", {
-  //     method: "POST",
-  //     mode: "cors",
-  //     cache: "no-cache",
-  //     headers: {
-  //       contentType: "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       Username: userName,
-  //       Password: password,
-  //       isTeacher: isTeacher,
-  //     }),
-  //   }).then((err) => console.log(err));
-  // };
   const handleSignIn = (e) => {
     e.preventDefault() ;
     let url = "http://0.0.0.0:5000/sign-in"
@@ -54,7 +38,7 @@ export default function SignInPage() {
     <>
       <Navbar />
       <div className="signin centered">
-        <h1>Sign Up</h1>
+        <h1>Sign In</h1>
         <form>
           <input
             type="username"
