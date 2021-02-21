@@ -1,0 +1,43 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+* {
+      font-family: Montserrat;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+.banner {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url(https://images.squarespace-cdn.com/content/v1/50cca155e4b0c301a8212ad4/1493737625844-A7MHC7K174FNIO1L98SF/ke17ZwdGBToddI8pDm48kLkXF2pIyv_F2eUT9F60jBl7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iyqMbMesKd95J-X4EagrgU9L3Sa3U8cogeb0tjXbfawd0urKshkc5MgdBeJmALQKw/GLC+Day+1.jpg);
+      background-size: cover;
+}
+.banner .content
+    {
+      max-width: 900px;
+      text-align: center;
+    }
+    .banner .content h2 {
+      font-size: 5em;
+      color: #fff;
+    }
+    .btn {
+      font-size: 1em;
+      color: #fff;
+      background: #C20114;
+      display: inline-block;
+      padding: 10px 30px;
+      margin-top: 20px
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 2px;
+      transition: 0.5s;
+    }
+    .btn:hover
+    {
+      letter-spacing: 6px;
+    }
