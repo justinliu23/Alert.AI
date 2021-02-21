@@ -35,6 +35,7 @@ export default function TeacherPage(props) {
         //For each unique student in the thing: create an array of all their attention values
         //FOR NOW: Find the one with the highest time value
         //Pass that value to the object.
+        const newCards = []
         
         for (let i = 0; i < users.length; i++) {
           let count = 0;
@@ -49,7 +50,7 @@ export default function TeacherPage(props) {
           const newCard = <StudentCard studentName={users[i]} studentScore={attnSum}/>
           newCards.push(newCard)
         }
-        const newCards = []
+        
         
         setStudentCards(newCards)
       })
