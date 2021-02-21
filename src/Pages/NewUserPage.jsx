@@ -12,12 +12,11 @@ export default function SignUpPage() {
 
   const handleRegistration = (e) =>{
     e.preventDefault() ;
-    let url = "http://localhost:5000/register"
+    let url = "http://localhost:5000/sign-up"
     let formData  = new FormData();
-    let data = this.state;
-    for(let name in data) {
-      formData.append(name, data[name]);
-    }
+    formData.append('userName', userName);
+    formData.append('password', password);
+    formData.append('isTeacher', isTeacher);
 
     fetch(url, {
       method: 'POST',
