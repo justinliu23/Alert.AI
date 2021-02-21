@@ -29,8 +29,9 @@ export default function TeacherPage(props) {
         console.log(data)
         const users = []
         for (let i = 0; i < data.length; i++) {
-          if(data['username'] in users) {} else {
-            users.push(data['username'])
+          if(users.includes(data[i]['studentName'])) {console.log('skipped user')} else {
+            users.push(data[i]['studentName'])
+            console.log(data[i]['studentName'])
           }
         }
         //For each unique student in the thing: create an array of all their attention values
@@ -38,14 +39,17 @@ export default function TeacherPage(props) {
         //Pass that value to the object.
         const newCards = []
 
+        console.log(users)
+
         for (let i = 0; i < users.length; i++) {
           let count = 0;
           let attnSum = 0;
           let justUser = data.filter(function (entry) {
-            return entry.username === users[i]
+            return entry.studentName === users[i]
           })
           for (let j = 0; j < justUser.length; j++) {
-            attnSum += justUser['attnScore']
+            attnSum += justUser[j]['attnScore']
+            count++
           }
           attnSum = attnSum/count
           const newCard = <StudentCard studentName={users[i]} studentScore={attnSum}/>
