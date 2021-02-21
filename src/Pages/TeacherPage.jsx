@@ -14,9 +14,9 @@ export default function TeacherPage(props) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const data = {
-        'classCode': props.classCode, //props.classCode
-      }
+      // const data = {
+      //   'classCode': props.classCode, //props.classCode
+      // }
 
       fetch(`http://127.0.0.1:5000/api/classroomdata?classCode=${encodeURIComponent(
         "ABCDE"
