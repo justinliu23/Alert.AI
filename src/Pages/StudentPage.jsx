@@ -4,7 +4,7 @@ import WebcamComponent from '../Components/Webcam/WebcamComponent'
 export default function StudentPage() {
     return (
         <div>
-            
+            <WebcamComponent />
             Student
         </div>
     )
