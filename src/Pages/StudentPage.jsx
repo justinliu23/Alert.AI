@@ -1,13 +1,16 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import WebcamComponent from '../Components/Webcam/WebcamComponent'
-import Navbar from '../Components/Navbar/Navbar'
+import LoggedNavbar from '../Components/LoggedNavbar/LoggedNavbar'
+import StudentReminder from '../Components/StudentReminder/StudentReminder'
 
 export default function StudentPage() {
     return (
-        <div>
-            <Navbar />
+        <>
+            <LoggedNavbar />
+        <div style={{display: 'flex'}}>
             <WebcamComponent />
-            Student
+            <StudentReminder />
         </div>
+        </>
     )
 }

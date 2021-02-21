@@ -55,13 +55,6 @@ const WebcamComponent = () => {
         videoConstraints={videoConstraints}
       />
     </div>
-    <button onClick={capture}>Capture photo</button>
-    {imgSrc && (
-        <img
-          src={imgSrc}
-          alt=''
-        />
-      )}
     </>
   );
 };

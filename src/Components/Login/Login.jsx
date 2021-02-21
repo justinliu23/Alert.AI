@@ -1,26 +1,9 @@
-import React from 'react'
-import {Redirect} from 'react-router-dom'
-import auth from "/auth"
+import React, {useState, useEffect} from 'react'
 
-function Login () {
-    const [
-      redirectToReferrer,
-      setRedirectToReferrer
-    ] = React.useState(false)
-  
-    const login = () => auth.authenticate(() => {
-      setRedirectToReferrer(true)
-    })
-  
-   if (redirectToReferrer === true) {
-     return <Redirect to='/' />
-   }
-  
-   return (
-     <div>
-       Login
-     </div>
-   )
-  }
-
-export default Login
+export default function Login() {
+  return (
+    <div>
+      
+    </div>
+  )
+}

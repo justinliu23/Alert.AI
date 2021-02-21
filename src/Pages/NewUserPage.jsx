@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../Components/Navbar/Navbar";
 import { Link } from "react-router-dom";
 import "./signpages.css";
-import auth from '../Auth'
+import auth from '../auth'
 
 export default function SignUpPage() {
   const [userName, setUserName] = useState("");
@@ -10,22 +10,31 @@ export default function SignUpPage() {
   const [isTeacher, setIsTeacher] = useState(false);
   const handleClick = () => setIsTeacher(!isTeacher);
 
-  const handleSignIn = (e) => {
-    e.preventDefault();
-    fetch("http://127.0.0.1:5000/api/auth", {
-      method: "POST",
-      mode: "cors",
-      cache: "no-cache",
-      headers: {
-        contentType: "application/json",
-      },
-      body: JSON.stringify({
-        Username: userName,
-        Password: password,
-        isTeacher: isTeacher,
-      }),
-    }).then((err) => console.log(err));
-  };
+  const handleRegistration = (e) =>{
+    e.preventDefault() ;
+    let url = "http://localhost:5000/register"
+    let formData  = new FormData();
+    let data = this.state;
+    for(let name in data) {
+      formData.append(name, data[name]);
+    }
+
+    fetch(url, {
+      method: 'POST',
+      body: formData
+    }).then( res => res.json())
+    .then(data=>{
+      localStorage.setItem('access_token', data.access_token);
+      
+      localStorage.setItem('username', data.username);
+
+      if (localStorage.getItem("access_token") !== null && localStorage.getItem("access_token")!=="undefined") {
+        window.location.replace("/")
+      }else{
+          alert(data.error)
+      }
+    }).catch(err => console.log(err));
+  }
 
   return (
     <>
@@ -57,7 +66,7 @@ export default function SignUpPage() {
             <span class="checkmark" />
           </label>
           <div>
-            <button onClick={handleSignIn}>Sign In</button>
+            <button onClick={handleRegistration}>Sign In</button>
             <Link to="/sign-up">Sign Up</Link>
           </div>
         </form>

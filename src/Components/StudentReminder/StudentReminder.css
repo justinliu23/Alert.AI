@@ -1,0 +1,16 @@
+.BAD {
+    background-color: red;
+}
+
+.OK {
+    background-color: green;
+}
+
+.container {
+    width: 40%;
+    padding-top: 40vh;
+    color: white;
+    margin: 20px;
+    text-align: center;
+
+}

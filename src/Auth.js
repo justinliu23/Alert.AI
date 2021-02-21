@@ -1,31 +1,16 @@
-const auth = {
-    isAuthenticated: false,
-    authenticate(data) {
-      //replace with call to flask
-      fetch("http://127.0.0.1:5000/api/auth", {
-      method: "POST",
-      mode: "cors",
-      cache: "no-cache",
-      headers: {
-        contentType: "application/json",
-      },
-      body: JSON.stringify({
-        data
-      }),
-    }).then((res) => res.JSON())
-    .then((data) => {
-      if(data.authenticated === true) {
-        this.isAuthenticated = true;
-      } else {
-        this.isAuthenticated = false;
-      }
-    }).then((err) => console.log(err));
-    },
-    signout(cb) {
-      this.isAuthenticated = false
-      setTimeout(cb, 100) // fake async
-      //replace with call to flask
-    }
-  }
+export function isLoggedIn() {
+  return localStorage.getItem("access_token")!==null && localStorage.getItem("access_token")!=="undefined";
+}
 
-export default auth
+export function deleteTokens(){
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("username");
+}
+export function requiredAuth(nextState, replace) {
+  if (!isLoggedIn()) {
+    replace({
+      pathname: '/',
+      state: { nextPathname: nextState.location.pathname }
+    })
+  }
+}

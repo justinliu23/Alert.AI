@@ -1,5 +1,7 @@
 .border {
     width: fit-content;
+    display: flex;
+    flex-direction: row;
     background-color: #0C120C;
     border: 30px solid #6D7275;
     padding: 30px;
