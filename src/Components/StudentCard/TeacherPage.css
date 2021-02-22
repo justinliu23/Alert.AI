@@ -48,7 +48,7 @@ body {
      .testimonials .content .box .text {
       text-align: center;
      }
-     .testimonials .content .box .text p {
+     .testimonials .content .box  .text p {
       color: #666;
       font-style: italic;
      }
@@ -59,6 +59,8 @@ body {
 
      }
 
+
+
 .box:hover
 {
   color: #C20114;
@@ -67,4 +69,9 @@ body {
 
 .naughty {
   background-color: #C20114;
+}
+
+
+.redbox {
+  background: #C20114 !important;
 }

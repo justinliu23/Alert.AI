@@ -72,7 +72,7 @@ export default function TeacherPage(props) {
     <Navbar />
         <section class="testimonials" id="testimonials">
             <div class = "title">
-              <h2 class ="titleText"> Students - {props.classCode} </h2>
+              <h2 class ="titleText"> Students - ABCDE{/*{props.classCode}*/} </h2>
             </div>
             <div class ="content">
               {/* <StudentCard studentName="student1" studentScore="5%"/>
